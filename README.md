@@ -1,12 +1,21 @@
 # Агрегатор медицинских услуг
 
-> ВНИМАНИЕ!!! Работаем, каждый только в своей ветке. Merge делаем только в ветку `dev`!
+## Запуск проекта
 
-## Git
-- Создаем свою ветку, ветку создавать лучше по названию фичи которую делаем.
-- Подтягиваем изменения с `origin dev`
-- Пилим фичу, делаем `git add -A`
-- Делаем `git commit -m "Текст коммита"`
-- Делаем `git pull origin dev`
-- Только потом делаем `merge`
-- И делаем `push`
+- устанваливаем PostgreSQL:
+для Ubuntu
+```sudo apt-get -y install postgresql
+для  остальных платформ - https://www.postgresql.org/download/
+
+``` git clone git@github.com:dkovalenko174/medical-services-aggregator.git
+
+``` cd server 
+``` npm install
+``` npx sequelize db:migrate;npx sequelize db:seed:all
+``` npm run dev
+
+``` cd client 
+``` npm install 
+``` npm start
+
+http://localhost:3001
