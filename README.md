@@ -12,7 +12,7 @@
 
 ### cd server 
 ### npm install
-### npx sequelize db:migrate;npx sequelize db:seed:all
+### npx sequeize db:create;npx sequelize db:migrate;npx sequelize db:seed:all
 ### npm run dev
 
 ### cd client 
