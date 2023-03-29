@@ -28,7 +28,7 @@ exports.EditReviewWithRating = async (req, res) => {
     try {
         const {reviewId, doctorId, clinicId, reviewText, rating} = req.body;
         const userId = res?.locals?.user?.id
- 
+
         //* апдейтим отзыв
 
         if (reviewText && clinicId) {
@@ -196,6 +196,13 @@ exports.NewEntry = async (req, res) => {
 
 
     try {
+
+        if (!userId) {
+            return res.status(400).json({error: 'You should login firstly'});
+        }
+        if (!existingUser) {
+            return res.status(400).json({error: 'You should register firstly'});
+        }
 
         const [nmbOfUpdatedShedule, updatedShedule] = await Shedule.update({statusAppointment, userId}, {
             where: {
