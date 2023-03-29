@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 
-import styles from "./clinical.css";
 import SelectMenus from "../../components/SelectMenus/SelectMenus";
 import { DoctorsTable } from "../../components/DoctorsTable";
 import YandexMap from "../../components/Map/Map";
@@ -19,14 +18,9 @@ const location = {
 export default function ClinicalCard() {
   const { id } = useParams();
   const [clinic, setClinic] = useState({ readyClinic: [], doctors: [] });
-  console.log("-> clinic", clinic);
-  const [reviews, setReviews] = useState();
   const [dataRes, setDataRes] = useState();
-
-  const data = { id: 1 };
   const loc = clinic?.readyClinic[0]?.address.split(', ')[2]
-// console.log(loc)
-//   console.log(location[`${loc}`])
+
   useEffect(() => {
     (async () => {
       const response = await fetch(`/main/clinic?clinicId=${id}`);
@@ -34,22 +28,19 @@ export default function ClinicalCard() {
       response.json().then((r) => {
       setClinic(r);
       })
-          // .catch((err) => {console.error(err)})
+
     })();
 
-  }, []);
+  }, [id]);
 
 
   const handleClick2 = (e) => {
     const profile = e.target.innerHTML;
     if (profile.length < 20) {
-      // console.log(profile.length)
       if (profile !== "All doctors") {
         const fill = clinic?.readyDoctorList?.filter(
           (el) => el.speciality === profile
         );
-        console.log("-> clinic", clinic);
-        console.log("-> fill", fill);
         setDataRes(fill);
       } else if (profile === "All doctors") {
         setDataRes(clinic?.readyDoctorList);

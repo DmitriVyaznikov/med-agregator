@@ -2,10 +2,6 @@ import React from 'react'
 import {Menu} from '@headlessui/react'
 import {ChevronDownIcon} from '@heroicons/react/20/solid'
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 let counter = 0
 export default function SortButtonDefault({allClinicsData, setAllClinicsData, allDoctorsData, setAllDoctorsData, shedule, setShedule}) {
     const handleSortByRating = () => {
@@ -48,12 +44,12 @@ export default function SortButtonDefault({allClinicsData, setAllClinicsData, al
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="inline-flex justify-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-gray-900 ring-gray-300">
+                <Menu.Button className="flex justify-center gap-x-1.5 px-3 text-sm font-semibold text-gray-900 ring-gray-300">
                     {/*<FormattedMessage*/}
                     {/*    id='Sort'*/}
                     {/*    defaultMessage="Default error message"*/}
                     {/*/>*/}
-                    <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" onClick={handleSortByRating} />
+                    <ChevronDownIcon className="mr-1 h-5 w-5 text-gray-400" aria-hidden="true" onClick={handleSortByRating} />
                 </Menu.Button>
             </div>
         </Menu>

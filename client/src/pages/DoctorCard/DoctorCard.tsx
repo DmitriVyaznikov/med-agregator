@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {DayView} from "../../components/DayView/DayView";
-import {useLocation, useParams} from "react-router-dom";
-import {ShedulRecModal} from "../../components/Modal/ShedulRecModal";
-import {initialState} from "../../redux/store";
-import {object} from "yup";
+import {useLocation} from "react-router-dom";
+
 import {FormattedMessage} from "react-intl";
 
 interface IDoctor {
@@ -40,7 +38,6 @@ export const DoctorCard = () => {
         clinic: false,
         clinicId: 0,
     });
-    console.log("-> doctor", doctor);
 
     const location = useLocation()
     const {id} = location.state
@@ -52,15 +49,9 @@ export const DoctorCard = () => {
                 setDoctor(data.readyDocOne)
             }
         )()
-    }, [])
+    }, [id])
 
-    // useEffect(() => {
-    //     fetch(`/main/doctor/${id}`)
-    //         .then(response => response.json())
-    //         .then(data => setDoctor(data.readyDocOne))
-    //         .catch(error => console.error(error));
-    // }, []);
-    // console.log("-> doctor", doctor);
+
     return (
         <div className="doctor__cad flex flex-col bg-white w-full mx-auto border rounded py-6 px-6 mt-4">
             <div className="doctor__card-row-1 flex flex-row justify-between">
@@ -83,10 +74,7 @@ export const DoctorCard = () => {
                                 />
                             </td>
                         </tr>
-                        {/*<tr className="border-b">*/}
-                        {/*    <td className="text-gray-500 pt-2">Стаж</td>*/}
-                        {/*    <td className="pl-4 font-semibold pt-2">-</td>*/}
-                        {/*</tr>*/}
+
                         <tr className="border-b">
                             <td className="text-gray-500 pt-2">
                                 <FormattedMessage
@@ -119,7 +107,7 @@ export const DoctorCard = () => {
                 </div>
                 <div
                     className="row-1__column-right flex border w-[150px] h-[150px] rounded bg-blue-200 items-center justify-center">
-                    <img src={doctor?.avatar}/></div>
+                    <img src={doctor?.avatar} alt="img"/></div>
             </div>
             <div className="doctor__card-row-2 mt-4">
                 <div className="text-gray-500">

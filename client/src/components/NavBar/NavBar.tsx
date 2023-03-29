@@ -35,7 +35,7 @@ export function NavBar() {
   const dispatch = useDispatch()
   const [user, setUser] = useState<string | undefined>('')
   const navigate = useNavigate();
-  // const {avatarGoogle} = useContext<AuthContextType>(AuthContext)
+
 
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export function NavBar() {
   //* Состояние модального окна передается в модальное окно
 
 
-  const {errorAuth, setErrorAuth, setShowModalRegister, setShowModalLogin} = useContext<AuthContextType>(AuthContext)
+  const {setErrorAuth, setShowModalRegister, setShowModalLogin} = useContext<AuthContextType>(AuthContext)
 
   const handleClick = (event: any) => {
     if (event.target.id === 'loginButton') {

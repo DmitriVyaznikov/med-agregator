@@ -5,20 +5,22 @@ import {FormattedMessage} from "react-intl";
 
 
 export function ShedulRecModal({props}) {
-  const {idDoctor, sheduleIdOneBlock, setStaff} = props
-  console.log("-> idDoctor", setStaff);
+  const {sheduleIdOneBlock, setStaff} = props
+
   const {
     showModalSheduleRec,
     setShowModalSheduleRec,
+    setShowModalMini,
+    setShowModalMiniText,
   } = useContext(AuthContext)
 
   const token = localStorage.getItem("jwtToken")
 
   const cancelButtonRef = useRef(null)
 
-  function handleClickModalShedule() {
+const handleClickModalShedule = async () => {
     // console.log(idDoctor, sheduleIdOneBlock)
-    fetch('/user/shedule/visit', {
+    const response = await fetch('/user/shedule/visit', {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
@@ -26,10 +28,19 @@ export function ShedulRecModal({props}) {
       },
       body: JSON.stringify({sheduleId: sheduleIdOneBlock.sheduleId, statusAppointment: 'pending'})
     })
-      .then(response => response.json())
-      .then(data => setStaff(data))
-      .catch(error => console.log(error));
+
+      const data = await response.json()
+
+
+  if (response.status === 200) {
+    setStaff(data)
     setShowModalSheduleRec(false)
+  }
+  if (response.status !== 200) {
+    setShowModalMini(true)
+    setShowModalMiniText(data)
+    setShowModalSheduleRec(false)
+  }
   }
 
   return (

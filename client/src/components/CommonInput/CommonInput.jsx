@@ -1,17 +1,15 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {Select} from 'antd';
-import {SearchResultsContext} from "../../context/context";
-import {ShedulRecModal} from "../Modal/ShedulRecModal";
 import {FormattedMessage} from "react-intl";
-import {AuthContext, AuthContextType} from "../../context";
+import {AuthContext} from "../../context";
 
 export function CommonInput({setData}) {
 
   const navigate = useNavigate();
 
   const getClinicsAndDoctors = useSelector((state) => state?.clinicsAndDoctors?.clinicsAndDoctors?.map(item => item.name))
+  console.log("-> getClinicsAndDoctors", getClinicsAndDoctors)
 
   const {placeholderText} = useContext(AuthContext);
 
@@ -40,6 +38,7 @@ export function CommonInput({setData}) {
 
   const handleInputChange = (event) => {
     const value = event.target.value;
+    console.log("-> value", value);
     setSearchTerm(value);
     const filteredResults = getClinicsAndDoctors.filter((item) =>
       item.toLowerCase().includes(value.toLowerCase())

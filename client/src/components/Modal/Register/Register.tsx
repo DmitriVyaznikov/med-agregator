@@ -113,8 +113,7 @@ function Register(): JSX.Element {
         search: 'Search'
       })
     }
-  },[locale])
-
+  },[locale, setPlaceholderText]);
 
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -122,7 +121,7 @@ function Register(): JSX.Element {
     try {
       if (userData.username && userData.password && userData.email && userData.firstName && userData.lastName && userData.telephone) {
         const data = await dispatch(register(userData))
-        // console.log("-> data", data);
+
 
         if (data?.message === 'Registration successful!') {
           setShowModalRegister(false)

@@ -1,5 +1,5 @@
 import { initialState } from '../store';
-import {IAllClinicAndDoctor, IGeneralState, IAllClinicAndDoctorAction, Types} from "../types/types";
+import {IGeneralState, IAllClinicAndDoctorAction, Types} from "../types/types";
 
 
 export const getDoctorsAndClinicsReducers = (state: IGeneralState = initialState, action: IAllClinicAndDoctorAction) => {

@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./errorPage.css"
 import {FormattedMessage} from "react-intl";
 import {useNavigate} from "react-router-dom";
 

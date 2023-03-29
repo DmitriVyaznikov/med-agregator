@@ -1,17 +1,6 @@
 import { Fragment, useCallback, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import {
-  BookmarkSquareIcon,
-  BriefcaseIcon,
-  BuildingOfficeIcon,
-  ComputerDesktopIcon,
-  GlobeAltIcon,
-  InformationCircleIcon,
-  NewspaperIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/outline";
 import Rating from "../Rating/Rating";
 import AddButton from "../AddButton/AddButton";
 import AddReview from "../AddReview/AddReview";
@@ -35,7 +24,7 @@ export default function ReviewsMenu(props) {
   return (
     <ContextReview.Provider value={{close}}>
     <Popover className="relative z-0 mt-10">
-      
+
       {({ open }) => (
         <>
         <AddReview showed={show}/>
@@ -73,12 +62,12 @@ export default function ReviewsMenu(props) {
                 <div className="w-1/2 bg-white" />
                 <div className="w-1/2 bg-gray-50" />
               </div>
-              
+
               <div className="relative mx-auto grid max-w-7xl grid-cols-1 ">
                 <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
                 <div className="mt-6 text-sm font-medium">
                     <a
-                    
+
                       className=" flex text-gray-600 transition duration-150 ease-in-out hover:text-gray-500"
                     >
                      Add a review
@@ -89,6 +78,7 @@ export default function ReviewsMenu(props) {
                   </div>
                   <div>
                   <AddReview showed={show}/>
+                    {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
                     <ul role="list" className="mt-6 space-y-6">
                       {rev?.map((post, index) => (
                         <li key={post.reviewId + index } className="flow-root">
@@ -114,7 +104,7 @@ export default function ReviewsMenu(props) {
                       ))}
                     </ul>
                   </div>
-                 
+
                 </div>
               </div>
             </Popover.Panel>

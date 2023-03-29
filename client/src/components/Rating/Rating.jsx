@@ -1,5 +1,6 @@
-// import { render } from "@headlessui/react/dist/utils/render";
-import React, { useState, useEffect } from "react";
+
+import React from "react";
+// eslint-disable-next-line no-unused-vars
 import styles from "./rating.css";
 
 function Rating(props) {
@@ -7,7 +8,6 @@ function Rating(props) {
   if (!rat) {
     rat = 0
   }
-  // const [data, setData] = useState()
   const random = Math.random()
   const a = [0, 0, 0, 0, 0];
   function stars() {

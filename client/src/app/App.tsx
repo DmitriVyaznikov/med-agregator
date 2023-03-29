@@ -20,12 +20,13 @@ import enMessages from '../messages/en.json';
 import ruMessages from '../messages/ru.json';
 import {ShedulePage} from "../pages/ShedulePage";
 import {NotePage} from "../pages/NotePage";
+import {Chat} from "../components/Chat/Chat";
 
 
 function App() {
 
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(true);
+  const [ setIsLoading] = useState(true);
   const [locale, setLocale] = useState('en');
   const messages = locale === 'ru' ? ruMessages : enMessages;
 
@@ -53,7 +54,6 @@ function App() {
 
 
   const user = useSelector(state => state.login?.user?.id);
-  // console.log("-> user", user);
 
 
   return (
@@ -92,7 +92,8 @@ function App() {
         </Routes>
         </>
 
-      }</IntlProvider>
+      }<Chat />
+      </IntlProvider>
 
     </AuthProvider>
   );

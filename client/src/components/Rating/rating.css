@@ -1,18 +1,20 @@
-star-rating {
+.star-rating {
   display: flex;
   justify-content: center;
   gap: 4px;
 }
 
 .c-star {
-  width: var(--size, 20px);
-  height: var(--size, 20px);
-  fill: lightgrey;
 
-  &.active {
-    fill: #fed94b;
-  }
+  width: 20px;
+  height: 20px;
+  fill: lightgrey;
 }
+
+.active {
+  fill: #fed94b;
+}
+
 
 * {
   box-sizing: border-box;

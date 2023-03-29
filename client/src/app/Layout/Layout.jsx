@@ -1,4 +1,4 @@
-import React, {FC, useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Outlet} from 'react-router-dom';
 import {NavBar} from "../../components/NavBar";
 import {Footer} from "../../components/Footer";
@@ -6,11 +6,8 @@ import {CommonInput} from "../../components/CommonInput/CommonInput";
 import {SearchResultsContext} from "../../context/context";
 
 
-// interface LayoutProps {
-//   title?: string
-// }
 
-export const Layout = ({title}) => {
+export const Layout = () => {
   const [data, setData] = useState({})
 
 
@@ -25,9 +22,6 @@ export const Layout = ({title}) => {
           <Outlet/>
         </SearchResultsContext.Provider>
       </div>
-      {/*<div className="container pt-6 flex flex-col px-4 w-full">*/}
-      {/*  {title && <h1 className="text-3xl font-bold text-clifford">{title}</h1>}*/}
-      {/*</div>*/}
 
       <Footer/>
     </div>

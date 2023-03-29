@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
+const { v4: uuidv4 } = require("uuid");
 
 const http = require('http');
 
@@ -32,7 +33,9 @@ io.on('connection', (socket) => {
 
   socket.on('message', (message) => {
     console.log(`Received message: ${message}`);
-    io.emit('message', message);
+    if (message === 'Hello') {
+      io.emit('message', 'You are welcome');
+    }
   });
 
   socket.on('disconnect', () => {
@@ -43,13 +46,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3001',
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization');
@@ -64,7 +67,7 @@ app.use('/clinical', ClinicRoutes)
 app.use('/profile', authenticate, UserRoutes)
 app.use('/user', authenticate, UserActions)
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   try {
     console.log(`Listening on port: ${PORT}`);
   } catch (error) {

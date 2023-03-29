@@ -1,11 +1,9 @@
 import {useContext, useState} from 'react'
-import { Switch } from '@headlessui/react'
+
 import {AuthContext} from "../../context";
 
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+
 
 export function Toggle() {
   const {locale, setLocale} = useContext(AuthContext)
@@ -19,10 +17,15 @@ export function Toggle() {
 
   return (
 
-    <div className={enabled ? 'border bg-white ml-2 rounded-md border-gray-600' : 'bg-gray-400 text-black' +
-      ' ml-2 rounded-md' +
-      ' border-gray-500'}>
-      <button className="px-4 py-2 rounded-md" onClick={toggleLanguage}>
+    <div className={enabled ? 'text-sm border bg-white ml-2 rounded-full border-gray-600 px-2.5 py-2' : 'text-sm' +
+      ' bg-gray-700' +
+      ' text-white py-2' +
+      ' px-2.5' +
+      ' rounded-full' +
+      ' text-black' +
+      ' ml-2 rounded-full' +
+      ' border-white'}>
+      <button className="" onClick={toggleLanguage}>
         {enabled ? 'En' : 'Ru'}
       </button>
     </div>
